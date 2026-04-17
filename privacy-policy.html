@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Asset Detective</title>
+  <style>
+    :root { --accent: #6366f1; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: #0d0f18;
+      color: #e4eaf6;
+      line-height: 1.7;
+      padding: 48px 24px;
+    }
+    .wrap { max-width: 680px; margin: 0 auto; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .subtitle { color: #8b96b8; margin-bottom: 40px; font-size: 14px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 32px 0 10px; color: var(--accent); }
+    p  { font-size: 14px; color: #c8d0e8; margin-bottom: 14px; }
+    ul { padding-left: 20px; margin-bottom: 14px; }
+    li { font-size: 14px; color: #c8d0e8; margin-bottom: 6px; }
+    a  { color: var(--accent); }
+    .badge {
+      display: inline-block;
+      background: rgba(99,102,241,.15);
+      color: var(--accent);
+      border: 1px solid rgba(99,102,241,.3);
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 32px;
+    }
+    hr { border: none; border-top: 1px solid #2a2f47; margin: 32px 0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">Asset Detective — Website Bloat Buster &nbsp;·&nbsp; Last updated: April 2025</p>
+    <span class="badge">No data leaves your device</span>
+
+    <h2>Overview</h2>
+    <p>
+      Asset Detective is a browser extension that analyzes CSS and JavaScript asset usage on websites you
+      choose to scan. This policy explains what data the extension touches, where it goes, and what it
+      does <em>not</em> do.
+    </p>
+
+    <h2>Data we collect</h2>
+    <p>We collect <strong>nothing</strong> on our servers. The extension has no backend, no analytics, and
+    makes no outbound network requests of its own. All data stays on your device inside
+    <code>chrome.storage.local</code>.</p>
+
+    <p>While a scan runs, the extension reads the following from the page you are actively scanning:</p>
+    <ul>
+      <li>The URLs of CSS and JavaScript files loaded by the page</li>
+      <li>Chrome DevTools Protocol coverage data (which CSS rules / JS bytes were executed)</li>
+      <li>CSS source text of stylesheets — to extract unused rule previews displayed to you</li>
+      <li>DOM class names and element IDs — to score JavaScript files for DOM impact</li>
+    </ul>
+    <p>This information is displayed in the extension's results panel and saved to your local browser
+    storage. It is never transmitted to any third party.</p>
+
+    <h2>chrome.storage.local</h2>
+    <p>Scan results and your extension settings are stored locally using
+    <code>chrome.storage.local</code>. This storage:</p>
+    <ul>
+      <li>Exists only on your device</li>
+      <li>Is not synced to your Google account</li>
+      <li>Is not accessible by any website or third party</li>
+      <li>Can be cleared at any time via <em>chrome://extensions → Asset Detective → Storage</em></li>
+    </ul>
+
+    <h2>Permissions explained</h2>
+    <ul>
+      <li><strong>debugger</strong> — Required to attach Chrome DevTools Protocol so the extension can
+        measure which CSS rules and JavaScript bytes were actually used on the page. Without this, coverage
+        analysis is technically impossible.</li>
+      <li><strong>activeTab</strong> — Grants access to the tab you're currently viewing when you start
+        a scan. Access is not retained after the scan finishes.</li>
+      <li><strong>storage</strong> — Saves scan results and your settings locally on your device.</li>
+      <li><strong>scripting</strong> — Injects a lightweight content script that monitors AJAX requests,
+        DOM mutations, and triggers scroll/interaction events to improve scan accuracy.</li>
+      <li><strong>tabs</strong> — Used to open the results page after a scan completes.</li>
+      <li><strong>&lt;all_urls&gt;</strong> — The content script needs to run on any website you choose
+        to scan. No data from visited sites is collected or transmitted.</li>
+    </ul>
+
+    <h2>Third-party services</h2>
+    <p>None. The extension does not use advertising networks, analytics services, crash-reporting
+    SDKs, or any remote APIs.</p>
+
+    <h2>Children's privacy</h2>
+    <p>This extension is a developer tool intended for web developers and site owners. It is not
+    directed at children under 13.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>Any changes will be reflected on this page with an updated date. Significant changes will be
+    noted in the Chrome Web Store update description.</p>
+
+    <h2>Contact</h2>
+    <p>Questions? Open an issue on
+    <a href="https://github.com/snntx/asset-detective-bloat-buster/issues" target="_blank" rel="noopener">
+      GitHub</a>.</p>
+
+    <hr />
+    <p style="font-size:12px;color:#8b96b8">
+      Asset Detective is open-source software released under the
+      <a href="https://github.com/snntx/asset-detective-bloat-buster/blob/main/LICENSE">MIT License</a>.
+    </p>
+  </div>
+</body>
+</html>

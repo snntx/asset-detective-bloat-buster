@@ -1,0 +1,60 @@
+{
+  "manifest_version": 3,
+  "name": "Asset Detective - Website Bloat Buster",
+  "version": "1.0.0",
+  "description": "Detect unused CSS & JS on any website with AJAX-aware scanning. See exactly what's wasted and why.",
+  "homepage_url": "https://madewithgpt.com",
+  "author": "snntx — https://madewithgpt.com",
+  "minimum_chrome_version": "111",
+
+  "permissions": [
+    "debugger",
+    "activeTab",
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Asset Detective",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+
+  "icons": {
+    "16":  "icons/icon16.png",
+    "48":  "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": ["results/results.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

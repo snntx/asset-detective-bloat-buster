@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asset Detective</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="popup-wrap">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="popup-logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="11" cy="11" r="7" stroke="#6366f1" stroke-width="2"/>
+          <path d="M16.5 16.5L21 21" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M8 11h6M11 8v6" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="popup-title">Asset Detective</span>
+      </div>
+      <button class="btn-icon" id="historyBtn" title="View scan history">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- URL strip -->
+    <div class="url-strip" id="urlStrip">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:var(--color-text-muted)"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+      <span id="urlLabel">—</span>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Scan Settings -->
+    <section class="card">
+      <p class="section-title">Scan Settings</p>
+      <div class="settings-grid">
+        <label class="setting-row">
+          <span class="setting-label">AJAX Settle Delay</span>
+          <div class="input-group">
+            <input type="number" id="ajaxDelay" value="3000" min="500" max="15000" step="500" />
+            <span class="input-suffix">ms</span>
+          </div>
+        </label>
+        <label class="setting-row toggle-row">
+          <span class="setting-label">Auto-scroll page</span>
+          <div class="toggle">
+            <input type="checkbox" id="autoScroll" checked />
+            <span class="toggle-knob"></span>
+          </div>
+        </label>
+        <label class="setting-row toggle-row">
+          <span class="setting-label">Trigger interactions</span>
+          <div class="toggle">
+            <input type="checkbox" id="triggerInteractions" checked />
+            <span class="toggle-knob"></span>
+          </div>
+        </label>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Status / Progress -->
+    <div class="status-bar" id="statusBar" style="display:none">
+      <div class="status-spinner"></div>
+      <span id="statusText">Initializing…</span>
+    </div>
+
+    <!-- Actions -->
+    <div class="action-row">
+      <button class="btn-primary btn-wide" id="scanBtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Start Scan
+      </button>
+      <button class="btn-secondary" id="viewResultsBtn" style="display:none">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        Results
+      </button>
+    </div>
+
+    <!-- Quick summary strip (shown after scan) -->
+    <div class="quick-summary" id="quickSummary" style="display:none">
+      <div class="qs-item qs-relevant">
+        <span class="qs-count" id="qsRelevant">—</span>
+        <span class="qs-label">Relevant</span>
+      </div>
+      <div class="qs-item qs-partial">
+        <span class="qs-count" id="qsPartial">—</span>
+        <span class="qs-label">Partial</span>
+      </div>
+      <div class="qs-item qs-irrelevant">
+        <span class="qs-count" id="qsIrrelevant">—</span>
+        <span class="qs-label">Irrelevant</span>
+      </div>
+      <div class="qs-item qs-bloat">
+        <span class="qs-count" id="qsBloat">—</span>
+        <span class="qs-label">Bloat</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
