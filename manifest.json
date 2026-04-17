@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Detect unused CSS & JS on any website with AJAX-aware scanning. See exactly what's wasted and why.",
   "homepage_url": "https://madewithgpt.com",
-  "author": "snntx — https://madewithgpt.com",
+  "author": "snntx",
   "minimum_chrome_version": "111",
 
   "permissions": [
@@ -49,12 +49,5 @@
     "16":  "icons/icon16.png",
     "48":  "icons/icon48.png",
     "128": "icons/icon128.png"
-  },
-
-  "web_accessible_resources": [
-    {
-      "resources": ["results/results.html"],
-      "matches": ["<all_urls>"]
-    }
-  ]
+  }
 }

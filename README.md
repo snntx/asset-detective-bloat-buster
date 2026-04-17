@@ -80,7 +80,7 @@ All data stays on your device. Nothing is transmitted to any server.
 ## Privacy
 
 See [privacy-policy.html](privacy-policy.html) — hosted at  
-`https://madewithgpt.com/asset-detective/privacy-policy.html`
+`https://madewithgpt.com/privacy-policy/asset-detective/`
 
 **Summary:** No data collection. No analytics. No external requests. Scan results are stored only in `chrome.storage.local` on your device.
 
