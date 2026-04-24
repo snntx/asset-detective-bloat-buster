@@ -13,7 +13,7 @@
     const classes = new Set();
     const ids     = new Set();
     document.querySelectorAll('[class]').forEach(el => {
-      el.className.split(/\s+/).filter(Boolean).forEach(c => classes.add(c));
+      el.classList?.forEach(c => { if (c) classes.add(c); });
     });
     document.querySelectorAll('[id]').forEach(el => ids.add(el.id));
     return { classes: [...classes], ids: [...ids] };
@@ -24,12 +24,16 @@
   let domMutationClasses   = new Set();
   let domMutationIds       = new Set();
 
+  // Safe class extractor — handles SVGAnimatedString and plain strings
+  function addClasses(el) {
+    el.classList?.forEach(c => { if (c) domMutationClasses.add(c); });
+  }
+
   const mutObs = new MutationObserver(mutations => {
     for (const m of mutations) {
       mutationCount++;
-      // Capture classes/IDs added via DOM mutations (JS-driven changes)
       if (m.type === 'attributes' && m.attributeName === 'class') {
-        m.target.className.split(/\s+/).filter(Boolean).forEach(c => domMutationClasses.add(c));
+        addClasses(m.target);
       }
       if (m.type === 'attributes' && m.attributeName === 'id' && m.target.id) {
         domMutationIds.add(m.target.id);
@@ -37,11 +41,10 @@
       if (m.type === 'childList') {
         m.addedNodes.forEach(node => {
           if (node.nodeType !== 1) return;
-          if (node.className) node.className.split(/\s+/).filter(Boolean).forEach(c => domMutationClasses.add(c));
+          addClasses(node);
           if (node.id) domMutationIds.add(node.id);
-          // Walk children too
           node.querySelectorAll?.('[class],[id]').forEach(el => {
-            if (el.className) el.className.split(/\s+/).filter(Boolean).forEach(c => domMutationClasses.add(c));
+            addClasses(el);
             if (el.id) domMutationIds.add(el.id);
           });
         });
