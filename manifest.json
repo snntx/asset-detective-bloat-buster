@@ -9,9 +9,7 @@
 
   "permissions": [
     "debugger",
-    "activeTab",
     "storage",
-    "scripting",
     "tabs"
   ],
   "host_permissions": [
